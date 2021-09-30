@@ -30,5 +30,6 @@ runs:
       restore-keys: ${{ runner.os }}-m2-
 
   - id: set-maven-ops
+    name: Set MAVEN_OPTS parameters
     run: echo "MAVEN_OPTS=-Dmaven.repo.local=${{ inputs.maven_repository }} -s ${{ inputs.maven_settings_xml }} --batch-mode --update-snapshots" >> $GITHUB_ENV
     shell: sh
