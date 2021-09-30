@@ -20,10 +20,10 @@ runs:
 
   - name: Cache maven packages
     uses: actions/cache@v2
-    with:
-      path: ${{ inputs.maven_repository }}
-      key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-      restore-keys: ${{ runner.os }}-m2-
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-m2
+        restore-keys: ${{ runner.os }}-m2
 
   - id: set-maven-ops
     name: Set MAVEN_OPTS parameters
