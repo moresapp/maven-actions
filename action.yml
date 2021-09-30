@@ -33,5 +33,6 @@ runs:
     name: Set MAVEN_OPTS parameters
     run: |
       echo "MAVEN_OPTS=-Dmaven.repo.local=${{ inputs.maven_repository }}" >> $GITHUB_ENV
-      echo "MAVEN_CLI_OPTS=-s ${{ inputs.maven_settings_xml }} --batch-mode --update-snapshots" >> $GITHUB_ENV
+      echo "Creating alias for mvn command"
+      alias mvn="mvn -s ${{ inputs.maven_settings_xml }} --batch-mode --update-snapshots"
     shell: sh
