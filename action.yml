@@ -2,10 +2,6 @@ name: "Mores Maven Actions"
 description: "Support Maven actions (build, deploy, release)"
 
 inputs:
-  maven_settings_xml:
-    description: "Path to maven settings.xml"
-    required: true
-    default: ${{ github.action_path }}/settings.xml
   maven_repository:
     description: "Path to maven repository (default ~/.m2/repository)"
     required: true
@@ -33,5 +29,5 @@ runs:
     name: Set MAVEN_OPTS parameters
     run: |
       echo "MAVEN_OPTS=-Dmaven.repo.local=${{ inputs.maven_repository }}" >> $GITHUB_ENV
-      echo "MAVEN_CLI_OPTS=-s ${{ inputs.maven_settings_xml }} --batch-mode --update-snapshots" >> $GITHUB_ENV
+      echo "MAVEN_CLI_OPTS=-s ${{ github.action_path }}/settings.xml --batch-mode --update-snapshots" >> $GITHUB_ENV
     shell: sh
