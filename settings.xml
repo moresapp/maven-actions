@@ -12,7 +12,7 @@
         <server>
             <id>github-moresapp</id>
             <username>${env.$GITHUB_ACTOR}</username>
-            <password>${env.GITHUB_REPO_TOKEN}</password>
+            <password>${env.MORESAPP_REPO_TOKEN}</password>
         </server>
         <server>
             <id>github-xit</id>
