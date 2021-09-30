@@ -25,6 +25,10 @@ runs:
   - name: Cache maven packages
     uses: actions/cache@v2
     with:
-      path: ${{ maven_repository }}
+      path: ${{ inputs.maven_repository }}
       key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
       restore-keys: ${{ runner.os }}-m2-
+
+  - id: set-maven-ops
+    run: echo "MAVEN_OPTS=-Dmaven.repo.local=${{ inputs.maven_repository }} -s ${{ inputs.maven_settings_xml }} --batch-mode --update-snapshots" >> $GITHUB_ENV
+    shell: sh
